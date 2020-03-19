@@ -12,17 +12,17 @@ module.exports = app => {
         const user = { ...req.body }
         if(req.params.id) user.id = req.params.id
         
-        try{
-            existOrError(user.name, 'Nome não informado')
-            existOrError(user.email, 'E-mail não informado')
-            existOrError(user.password, 'Senha não informada')
-            existOrError(user.confirmPassword, 'Confirmação de Senha Inválida')
-            equalsOrError(user.password, user.confirmPassword, 'Senhas não conferem')
+        try {
+            existOrError(user.name, 'Nome não informado.')
+            existOrError(user.email, 'E-mail não informado.')
+            existOrError(user.password, 'Senha não informad.a')
+            existOrError(user.confirmPassword, 'Confirmação de Senha Inválida.')
+            equalsOrError(user.password, user.confirmPassword, 'Senhas não conferem.')
 
             const userFromDB = await app.db('users')
                 .where({ email: user.email }).first()
-                if(!user.id) notExistsOrError(userFromDB, 'Usuário já cadastrado')
-        }catch(msg){
+                if(!user.id) notExistsOrError(userFromDB, 'Usuário já cadastrado.')
+        } catch(msg) {
             return res.status(400).send(msg)
         }
 
@@ -35,7 +35,7 @@ module.exports = app => {
                 .where({ id: user.id })
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
-        }else{
+        } else {
             app.db('users')
                 .insert(user)
                 .then(_ => res.status(204).send())
