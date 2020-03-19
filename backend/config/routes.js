@@ -13,7 +13,7 @@ module.exports = app => {
         .put(admin(app.api.user.save))
         .get(admin(app.api.user.getById))
         .delete(admin(app.api.user.remove))
-
+        
     app.route('/categories')
         .all(app.config.passport.authenticate())
         .get(admin(app.api.category.get))
