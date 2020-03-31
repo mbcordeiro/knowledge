@@ -10,7 +10,7 @@
 
 <script>
 import axios from "axios";
-import { baseApiUrl, userKey } from "@/globa";
+import { baseApiUrl, userKey } from "@/global";
 import { mapState } from "vuex";
 import Header from "@/components/template/Header";
 import Menu from "@/components/template/Menu";
